@@ -1,95 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-function WODDiceTable() {
-    const [diceInfo, setDiceInfo] = useState({
-        numDice: 1,
-        successValue: 1,
-        rerollAbove: 10,
-        isNumDiceError: false,
-        isSuccessValueError: false,
-        isRerollAboveError: false
-    });
-
-    const handleInputChange = (e, key) => {
-        const newValue = e.target.value;
-        setDiceInfo(prevState => {
-            return { ...prevState, [key]: newValue };
-        });
-    };
-
-    const handleSubmit = () => {
-        const errors = checkInputs();
-        for (const [key, value] of Object.entries(errors)) {
-            if (value !== diceInfo[key]) {
-                setInputError(key, value);
-            }
-        }
-    };
-
-    const resetForm = () => {
-        const originalData = {
-            numDice: 1,
-            successValue: 1,
-            rerollAbove: 10,
-            isNumDiceError: false,
-            isSuccessValueError: false,
-            isRerollAboveError: false
-        };
-        setDiceInfo(originalData);
-    };
-
-    const checkInputs = () => {
-        const errors = {};
-
-        // The number of dice must be at least one
-        errors.isNumDiceError = !validateNumber(diceInfo.numDice, 1);
-
-        // The success value must be a number between one and ten
-        errors.isSuccessValueError = !validateNumber(
-            diceInfo.successValue,
-            1,
-            10
-        );
-
-        // The reroll number must be a number between one and ten
-        errors.isRerollAboveError = !validateNumber(
-            diceInfo.rerollAbove,
-            1,
-            10
-        );
-
-        return errors;
-    };
-
-    const setInputError = (key, checkedValue) => {
-        if (checkedValue !== diceInfo["key"]) {
-            setDiceInfo(prevState => {
-                return { ...prevState, [key]: checkedValue };
-            });
-        }
-    };
-
-    const validateNumber = (value, min, max = null) => {
-        const convertedValue = Number(value);
-
-        if (!Number.isInteger(convertedValue)) {
-            console.log("not numeric");
-            return false;
-        }
-
-        if (max) {
-            return convertedValue >= min && convertedValue <= max;
-        } else {
-            return convertedValue >= min;
-        }
-    };
-
+function WODDiceTable(props) {
     return (
         <form className="w-50">
             <div
                 id="numDiceAlert"
                 className={`alert alert-danger ${
-                    diceInfo.isNumDiceError ? "" : "d-none"
+                    props.isNumDiceError ? "" : "d-none"
                 }`}
                 role="alert"
             >
@@ -101,17 +18,16 @@ function WODDiceTable() {
                 </label>
                 <input
                     type="number"
-                    id="numDice"
                     className="form-control"
                     min="1"
-                    value={diceInfo.numDice}
-                    onChange={e => handleInputChange(e, "numDice")}
+                    value={props.numDice}
+                    onChange={e => props.onInputChange(e, "numDice")}
                 />
             </div>
             <div
                 id="successValueAlert"
                 className={`alert alert-danger ${
-                    diceInfo.isSuccessValueError ? "" : "d-none"
+                    props.isSuccessValueError ? "" : "d-none"
                 }`}
                 role="alert"
             >
@@ -121,18 +37,17 @@ function WODDiceTable() {
                 <label htmlFor="successValue">What is the DC?</label>
                 <input
                     type="number"
-                    id="successValue"
                     className="form-control"
                     min="1"
                     max="10"
-                    value={diceInfo.successValue}
-                    onChange={e => handleInputChange(e, "successValue")}
+                    value={props.successValue}
+                    onChange={e => props.onInputChange(e, "successValue")}
                 />
             </div>
             <div
                 id="rerollAboveAlert"
                 className={`alert alert-danger ${
-                    diceInfo.isRerollAboveError ? "" : "d-none"
+                    props.isRerollAboveError ? "" : "d-none"
                 }`}
                 role="alert"
             >
@@ -144,33 +59,28 @@ function WODDiceTable() {
                 </label>
                 <input
                     type="number"
-                    id="rerollAbove"
                     className="form-control"
-                    min="1"
+                    min="2"
                     max="10"
-                    value={diceInfo.rerollAbove}
-                    onChange={e => handleInputChange(e, "rerollAbove")}
+                    value={props.rerollAbove}
+                    onChange={e => props.onInputChange(e, "rerollAbove")}
                 />
             </div>
 
             <button
-                id="rollDice"
                 type="submit"
                 className="btn btn-primary btn-lg btn-block"
                 onClick={e => {
                     e.preventDefault();
-                    handleSubmit();
+                    props.onSubmit();
                 }}
             >
                 Roll!
             </button>
             <button
-                id="resetForm"
                 type="reset"
                 className="btn btn-secondary btn-lg btn-block"
-                onClick={e => {
-                    resetForm();
-                }}
+                onClick={props.onReset}
             >
                 Reset
             </button>
