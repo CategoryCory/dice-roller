@@ -7,8 +7,6 @@ function Home() {
             <p>
                 This app will provide two different dice rollers, one for
                 D20-style games and another for World of Darkness style games.
-                The WoD roller is completed, and the D20 roller will be added in
-                a future update.
             </p>
             <p>
                 This app was created using ReactJS and the Bootstrap CSS

@@ -25,6 +25,9 @@ function Navbar() {
                         <Link className="nav-item nav-link" to="/wod-roller">
                             WoD Dice Roller
                         </Link>
+                        <Link className="nav-item nav-link" to="/d20-roller">
+                            D20 Dice Roller
+                        </Link>
                     </div>
                 </div>
             </div>

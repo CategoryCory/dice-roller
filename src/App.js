@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import WODRoller from "./components/WODRoller/WODRoller";
+import D20Roller from "./components/D20Roller/D20Roller";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 <Switch>
                     <Route path="/" component={Home} exact />
                     <Route path="/wod-roller" component={WODRoller} />
+                    <Route path="/d20-roller" component={D20Roller} />
                     <Route component={Error} />
                 </Switch>
             </main>
