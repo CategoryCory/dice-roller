@@ -114,7 +114,7 @@ class D20Roller extends Component {
         return (
             <div className="container d-flex flex-column justify-content-center align-items-center">
                 <div className="container mt-4 border-bottom border-secondary">
-                    <h1 className="text-center">D20 Dice Roller</h1>
+                    <h2 className="text-center">D20 Dice Roller</h2>
                 </div>
 
                 <div className="container d-flex flex-column justify-content-center align-items-center my-4">
