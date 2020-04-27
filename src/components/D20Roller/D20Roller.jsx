@@ -113,26 +113,31 @@ class D20Roller extends Component {
             ));
         return (
             <div className="container d-flex flex-column justify-content-center align-items-center">
-                <div className="container mt-4">
+                <div className="container mt-4 border-bottom border-secondary">
                     <h1 className="text-center">D20 Dice Roller</h1>
                 </div>
-                <div className="container d-flex flex-column justify-content-center align-items-center my-3 border rounded p-3">
-                    <Result text={this.state.resultTotal} />
-                    <div className="d-flex flex-row justify-content-center mt-3">
+
+                <div className="container d-flex flex-column justify-content-center align-items-center my-4">
+                    <div>
+                        <Result text={this.state.resultTotal} />
+                    </div>
+
+                    <div>
                         <button
-                            className="btn btn-outline-secondary btn-lg m-3"
+                            className="btn btn-outline-secondary btn-lg mx-2"
                             onClick={this.handleAllReset}
                         >
                             Reset
                         </button>
                         <button
-                            className="btn btn-primary btn-lg m-3"
+                            className="btn btn-primary btn-lg mx-2"
                             onClick={this.getResult}
                         >
                             Roll!
                         </button>
                     </div>
                 </div>
+
                 <div className="row mb-2">
                     <div className="col-12 col-md-6 mb-3">
                         <DiceSelector
@@ -149,6 +154,7 @@ class D20Roller extends Component {
                         {diceList}
                     </div>
                 </div>
+
                 <ResultTable resultSet={this.state.resultSet} />
             </div>
         );
