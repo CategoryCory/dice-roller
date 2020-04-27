@@ -16,7 +16,7 @@ function WODDiceResults(props) {
         }
 
         // Loop through for each roll in results
-        const tableRows = props.rolls.map(roll => {
+        const tableRows = props.rolls.map((roll) => {
             let rowData;
 
             // Check to see if current roll has a single result or is an array of results
@@ -67,9 +67,11 @@ function WODDiceResults(props) {
         });
 
         return (
-            <div className="card mt-5 mb-4 w-50">
+            <div className="card mt-5 mb-4 w-75">
                 <div className="card-body">
-                    <h2 className="card-title text-center">{titleText}</h2>
+                    <h2 className="card-title text-center">
+                        <span className="badge badge-primary">{titleText}</span>
+                    </h2>
                     <table className="table">
                         <thead>
                             <tr>

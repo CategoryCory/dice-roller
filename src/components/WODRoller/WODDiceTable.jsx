@@ -2,7 +2,7 @@ import React from "react";
 
 function WODDiceTable(props) {
     return (
-        <form className="w-50">
+        <form>
             <div
                 id="numDiceAlert"
                 className={`alert alert-danger ${
@@ -21,7 +21,7 @@ function WODDiceTable(props) {
                     className="form-control"
                     min="1"
                     value={props.numDice}
-                    onChange={e => props.onInputChange(e, "numDice")}
+                    onChange={(e) => props.onInputChange(e, "numDice")}
                 />
             </div>
             <div
@@ -41,7 +41,7 @@ function WODDiceTable(props) {
                     min="1"
                     max="10"
                     value={props.successValue}
-                    onChange={e => props.onInputChange(e, "successValue")}
+                    onChange={(e) => props.onInputChange(e, "successValue")}
                 />
             </div>
             <div
@@ -63,14 +63,14 @@ function WODDiceTable(props) {
                     min="2"
                     max="10"
                     value={props.rerollAbove}
-                    onChange={e => props.onInputChange(e, "rerollAbove")}
+                    onChange={(e) => props.onInputChange(e, "rerollAbove")}
                 />
             </div>
 
             <button
                 type="submit"
                 className="btn btn-primary btn-lg btn-block"
-                onClick={e => {
+                onClick={(e) => {
                     e.preventDefault();
                     props.onSubmit();
                 }}
