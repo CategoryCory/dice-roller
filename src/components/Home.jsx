@@ -5,8 +5,8 @@ function Home() {
         <div className="container mt-5">
             <h1 className="text-center">Dice Roller App</h1>
             <p>
-                This app will provide two different dice rollers, one for
-                D20-style games and another for World of Darkness style games.
+                This app provides two different dice rollers, one for D20-style
+                games and another for World of Darkness style games.
             </p>
             <p>
                 This app was created using ReactJS and the Bootstrap CSS
